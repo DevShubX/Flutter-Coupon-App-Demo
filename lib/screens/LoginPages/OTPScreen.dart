@@ -141,13 +141,12 @@ class _OTPScreenState extends State<OTPScreen> {
             CustomButton(
                 text: "Submit",
                 onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) =>
-                  //           const VerificationCompleteScreen(),
-                  //     ));
-                  getOTP();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const VerificationCompleteScreen(),
+                      ));
                 })
           ],
         ),
