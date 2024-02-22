@@ -14,7 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _phoneNumberController = TextEditingController();
 
-  late String _phoneNumber = "+911234567890";
+  late String _phoneNumber = "+44 7123 123 456";
 
   @override
   void initState() {

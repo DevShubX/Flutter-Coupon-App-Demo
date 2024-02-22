@@ -1,6 +1,7 @@
 import 'package:coupon_app/components/CustomButton.dart';
 import 'package:coupon_app/constants/colors.dart';
 import 'package:coupon_app/screens/LoginPages/VerificationCompleteScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -16,6 +17,32 @@ class OTPScreen extends StatefulWidget {
 
 class _OTPScreenState extends State<OTPScreen> {
   TextEditingController _otpController = TextEditingController();
+
+  FirebaseAuth auth = FirebaseAuth.instance;
+
+  @override
+  void initState() {
+    getOTP();
+    super.initState();
+  }
+
+  void getOTP() async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: widget.phoneNumber,
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        await auth.signInWithCredential(credential).then((value) => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const VerificationCompleteScreen())),
+            });
+      },
+      verificationFailed: (FirebaseAuthException e) {},
+      codeSent: (String verificationId, int? resendToken) async {},
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,12 +141,13 @@ class _OTPScreenState extends State<OTPScreen> {
             CustomButton(
                 text: "Submit",
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            const VerificationCompleteScreen(),
-                      ));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) =>
+                  //           const VerificationCompleteScreen(),
+                  //     ));
+                  getOTP();
                 })
           ],
         ),
