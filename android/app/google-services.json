@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "499665469104",
+    "project_id": "coupon-app-4ef67",
+    "storage_bucket": "coupon-app-4ef67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499665469104:android:de84dc7e5902be905e0575",
+        "android_client_info": {
+          "package_name": "com.example.coupon_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtu0n2g_QLL_jssKAKHn-Z0pds-foAISI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
